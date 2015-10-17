@@ -6,7 +6,25 @@ public class Calculator {
 		if (text.equals(""))
 		
 			return 0;
-		
+
+		else if (text.contains("-"))
+		{
+			String totalMessage ="";
+			String message = "Negatives not allowed: ";
+			for (int i = 0; i < text.length(); i++)
+			{
+				if (text.substring(i, i+1).contains("-"))
+				{
+					if(i>0)
+					{
+						message += ",";
+					}	
+					
+					totalMessage = message + text.substring(i, i+2);
+				}
+			}
+			throw new IllegalArgumentException(totalMessage);
+		}
 		else if (text.contains(","))
 		{	
 			return sum(splitNumbers(text));
@@ -19,7 +37,6 @@ public class Calculator {
 
 		else if (text.startsWith("//"))
 		{
-
 			return sum(splitNumbers(text));
 		}
 
@@ -55,5 +72,7 @@ public class Calculator {
 		}
 		return total;
     }
+
+
 
 }
