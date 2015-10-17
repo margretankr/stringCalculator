@@ -19,12 +19,13 @@ public class Calculator {
 					{
 						message += ",";
 					}	
-					
+
 					totalMessage = message + text.substring(i, i+2);
 				}
 			}
 			throw new IllegalArgumentException(totalMessage);
 		}
+
 		else if (text.contains(","))
 		{	
 			return sum(splitNumbers(text));
@@ -68,11 +69,13 @@ public class Calculator {
 
  	    int total = 0;
         for(String number : numbers){
-		    total += toInt(number);
+        	int tempNumber = toInt(number);
+        	if(tempNumber <= 1000)
+        	{
+		 	   total += tempNumber;
+			}
 		}
 		return total;
     }
-
-
 
 }
