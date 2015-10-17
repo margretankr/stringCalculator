@@ -16,14 +16,27 @@ public class Calculator {
 		{
 			return sum(splitNumbers(text));
 		}
-		
+
+		else if (text.startsWith("//"))
+		{
+
+			return sum(splitNumbers(text));
+		}
+
 		else 
 			return 1;		
 	}
 
 	private static String [] splitNumbers (String numbers)
 	{
-		
+		if (numbers.startsWith("//"))
+		{
+			String delimiter = numbers.substring(2,3);
+			String number = numbers.substring(4);
+
+			return number.split(delimiter);
+
+		}
 
 		return numbers.split("[,\n]");
 	}
