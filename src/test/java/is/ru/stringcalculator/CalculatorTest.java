@@ -67,7 +67,6 @@ public class CalculatorTest {
 	@Test
 	public void testBigNumber() {
 		assertEquals(5, Calculator.add("9000,5"));
-	
 	}
 
 	@Test 
@@ -75,12 +74,9 @@ public class CalculatorTest {
 		assertEquals(0,Calculator.add("10000,4000"));
 	}
 
-
-
-
-
-
-
-
+	@Test 
+	public void testDelimiterOfAnyLength(){
+		assertEquals(6,Calculator.add("//[...]\n1...2...3"));
+	}
 
 }

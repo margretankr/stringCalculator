@@ -26,17 +26,17 @@ public class Calculator {
 			throw new IllegalArgumentException(totalMessage);
 		}
 
+		else if (text.startsWith("//"))
+		{
+			return sum(splitNumbers(text));
+		}
+
 		else if (text.contains(","))
 		{	
 			return sum(splitNumbers(text));
 		}
 
 		else if (text.contains("\n"))
-		{
-			return sum(splitNumbers(text));
-		}
-
-		else if (text.startsWith("//"))
 		{
 			return sum(splitNumbers(text));
 		}
@@ -49,7 +49,22 @@ public class Calculator {
 	{
 		if (numbers.startsWith("//"))
 		{
-			String delimiter = numbers.substring(2,3);
+			String delimiter = "";
+			if (numbers.startsWith("//["))
+			{
+				String[] arr = numbers.split("\n");	
+				int length = numbers.indexOf("]"); 			
+				delimiter = numbers.substring(3, length);
+				String result = "";
+				for (int i = 0; i < delimiter.length(); i++)
+				{
+					result += "\\" + delimiter.substring(i, i+1);
+				}
+
+				return arr[1].split(result);
+			}
+
+			delimiter = numbers.substring(2,3);
 			String number = numbers.substring(4);
 
 			return number.split(delimiter);
@@ -65,14 +80,17 @@ public class Calculator {
 	}
 
 	private static int sum(String[] numbers){
- 
+ 		
 
  	    int total = 0;
         for(String number : numbers){
-        	int tempNumber = toInt(number);
-        	if(tempNumber <= 1000)
+        	if (!number.isEmpty())
         	{
-		 	   total += tempNumber;
+        		int tempNumber = toInt(number);
+        		if(tempNumber <= 1000)
+        		{
+					total += tempNumber;
+				}
 			}
 		}
 		return total;
