@@ -11,6 +11,11 @@ public class Calculator {
 		{	
 			return sum(splitNumbers(text));
 		}
+
+		else if (text.contains("\n"))
+		{
+			return sum(splitNumbers(text));
+		}
 		
 		else 
 			return 1;		
@@ -20,7 +25,7 @@ public class Calculator {
 	{
 		
 
-		return numbers.split(",");
+		return numbers.split("[,\n]");
 	}
 
 	private static int toInt(String number){
