@@ -9,20 +9,20 @@ public class Calculator {
 
 		else if (text.contains("-"))
 		{
-			String totalMessage ="";
+			String totalMessage = "";
+			String tempMessage = "";
 			String message = "Negatives not allowed: ";
 			for (int i = 0; i < text.length(); i++)
 			{
 				if (text.substring(i, i+1).contains("-"))
 				{
-					if(i>0)
-					{
-						message += ",";
-					}	
-
-					totalMessage = message + text.substring(i, i+2);
+					tempMessage += text.substring(i,i+2);
+					totalMessage = message + tempMessage;
+					tempMessage += ",";
 				}
 			}
+			/*System.out.println("hallo");
+			System.out.println(totalMessage);*/
 			throw new IllegalArgumentException(totalMessage);
 		}
 

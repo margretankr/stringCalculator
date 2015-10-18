@@ -77,7 +77,6 @@ public class CalculatorTest {
     	}
     }
 
-
 	@Test
 	public void testBigNumber() {
 		assertEquals(5, Calculator.add("9000,5"));
