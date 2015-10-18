@@ -51,10 +51,28 @@ public class Calculator {
 		{
 			String delimiter = "";
 			if (numbers.startsWith("//["))
-			{
+			{	
+				if (numbers.contains("]["))
+				{
+					String[] arr = numbers.split("\n");	
+					int length = numbers.indexOf("\n"); 			
+					delimiter = numbers.substring(3, length-1);
+
+					String result = "";
+					for (int i = 0; i < delimiter.length(); i++)
+					{
+						if((delimiter.charAt(i) != '[' && delimiter.charAt(i) != ']'))
+						result += "\\" + delimiter.substring(i, i+1);
+					}
+					
+					result = "[" + result + "]";
+					return arr[1].split(result);
+				}
+
 				String[] arr = numbers.split("\n");	
 				int length = numbers.indexOf("]"); 			
 				delimiter = numbers.substring(3, length);
+
 				String result = "";
 				for (int i = 0; i < delimiter.length(); i++)
 				{
@@ -63,6 +81,8 @@ public class Calculator {
 
 				return arr[1].split(result);
 			}
+
+
 
 			delimiter = numbers.substring(2,3);
 			String number = numbers.substring(4);
