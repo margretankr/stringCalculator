@@ -65,6 +65,20 @@ public class CalculatorTest {
 	}
 
 	@Test
+	(expected = RuntimeException.class)  
+    public void testNegativeNumbersVol4(){
+    	try{
+    		Calculator.add("2,-4,3,-5");
+    	}
+    	catch (RuntimeException ex){
+    		
+    		assertEquals("Negatives not allowed: -4,-5",ex.getMessage());
+    		throw ex;
+    	}
+    }
+
+
+	@Test
 	public void testBigNumber() {
 		assertEquals(5, Calculator.add("9000,5"));
 	}
